@@ -49,9 +49,8 @@
   padding: 10px;
 }
 
-.loginButton:disabled {
-  cursor: not-allowed;
-  background-color: rgb(252, 173, 173);
+.loginButton:hover{
+  background-color: #078d2f;
 }
 
 .search-select {

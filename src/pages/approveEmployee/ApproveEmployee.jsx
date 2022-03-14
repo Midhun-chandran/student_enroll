@@ -67,6 +67,7 @@ export default function ApproveEmployee() {
           ))}
         </tbody>
       </table>
+    
     </div>
   );
 }

@@ -4,8 +4,14 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Context } from "../../context/Context";
 import { Link } from 'react-router-dom';
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 
 export default function ViewCourse() {
+   useEffect(()=>{
+    Aos.init({duration:1000});
+  },[]);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [course, setCourse] = useState({});
@@ -64,7 +70,7 @@ export default function ViewCourse() {
     <div className="singleCourse">
       <div className="singleCourseWrapper">
         {course.photo && (
-          <img src={PF + course.photo} alt="" className="singleCourseImg" />
+          <img src={PF + course.photo} alt="" className="singleCourseImg" data-aos="fade-down" />
         )}
         {updateMode ? (
           <input
@@ -98,10 +104,10 @@ export default function ViewCourse() {
           <textarea
             className="singleCourseDescInput"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)} 
           />
         ) : (
-          <p className="singleCourseDesc">{description}</p>
+          <p className="singleCourseDesc" data-aos="fade-up">{description}</p>
           
           
         )}

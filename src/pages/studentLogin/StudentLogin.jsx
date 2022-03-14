@@ -3,7 +3,7 @@ import "./studentLogin.css";
 import { Context } from "../../context/Context";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
-import Footer from '../../components/footer/Footer.jsx'
+
 
 export default function StudentLogin() {
   const { dispatch, isFetching } = useContext(Context);
@@ -63,7 +63,6 @@ export default function StudentLogin() {
 </div>
       <p>{wrong}</p>
     </div>
-    <Footer/>
     </>
   );
 }

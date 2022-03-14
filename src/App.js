@@ -21,6 +21,7 @@ import StudentProfile from "./pages/studentProfile/StudentProfile";
 import ApproveEmployee from "./pages/approveEmployee/ApproveEmployee";
 import EmployeeProfile from "./pages/employeeProfile/EmployeeProfile";
 import Payment from "./components/payment/Payment";
+import  Footer from './components/footer/Footer';
 
 function App() {
   const { user } = useContext(Context);
@@ -52,6 +53,7 @@ function App() {
         <Route path="/employee-approve" element={<ApproveEmployee />} />
         <Route path="/payment" element={<Payment />} />
       </Routes>
+        < Footer />
     </Router>
   );
 }
