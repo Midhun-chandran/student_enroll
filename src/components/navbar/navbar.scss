@@ -6,7 +6,8 @@
   height: 100px;
   width: 100%;
   z-index: 999;
-  background: rgb(0, 0, 0);
+  height: 80px;
+  background: rgb(16, 13, 27);
   &.admin {
     background-color: black;
     font-size: 12px;
@@ -28,7 +29,7 @@
       padding-left: 50px;
 
       img {
-        height: 85px;
+        height: 70px;
         margin-right: 50px;
       }
       span {
@@ -69,6 +70,9 @@
       }
     }
   }
+}
+.left img:hover{
+ transform: scale(1.1);
 }
 
 @media screen and (max-width: 968px) {
