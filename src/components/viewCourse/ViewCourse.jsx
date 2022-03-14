@@ -67,7 +67,7 @@ export default function ViewCourse() {
   };
 
   return (
-    <div className="singleCourse">
+    <div className="singlCourse">
       <div className="singleCourseWrapper">
         {course.photo && (
           <img src={PF + course.photo} alt="" className="singleCourseImg" data-aos="fade-down" />
