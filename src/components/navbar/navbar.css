@@ -1,0 +1,189 @@
+.navbar {
+  background-color: rgb(1, 12, 2);
+  position: fixed;
+    top: 0;
+       z-index: 999;
+       width: 100%;
+       display: flex;
+       height: 64px;
+  
+  
+}
+.options1 {
+    display: none;
+    background-color: rgb(11, 44, 19);
+    border-radius: 5px;
+  }
+
+.dropdown1:hover .options1 {
+    
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+     
+ 
+
+    }
+    .options2 {
+      display: none;
+      background-color: rgb(11, 44, 19);
+      border-radius: 5px;
+ 
+    }
+
+    .dropdown2:hover .options2 {
+
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+
+
+    }
+.nav-links{
+  display: flex;
+  
+  list-style: none;
+  width: 75%;
+}
+.homee,
+.add-course,
+.coursee,
+.employee,
+.search-stud,
+.approv-stud,
+.approv-empl,
+.options1,
+.dropdown1,
+.options2,
+.dropdown2
+{
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px;
+  margin :0 20px;
+  cursor: pointer;
+  z-index: 999;
+  width: 10%;
+text-overflow: ellipsis;
+
+}
+.my-prof,
+.usernme,
+.logot{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    margin :0 7px;
+    cursor: pointer;
+    z-index: 999;
+    width: 10%;
+    padding-right: 40px;
+       display: flex;
+
+
+}
+.my-prof{
+margin-left: 58%;
+}
+.mobile-menu-icon{
+  display: none;
+}
+.img-li img{
+width: 50px;
+
+ 
+}
+.studroll{
+  text-decoration: none;
+  color: rgb(133, 176, 255);
+  font-weight: bold;
+  padding-top: 8px;
+
+}
+
+@media screen and (max-width: 780px)
+
+{
+    .navbar{
+    width: 100%;
+    height: 12%;
+   
+    }
+    .nav-links{
+      display: none;
+    }
+    .nav-links-mobile{
+      position: absolute;
+      display: block;
+      list-style: none;
+      background-color: rgb(0, 73, 22);
+      left: 0;
+      top: 80%;
+      transition: all 0.5s ease-out;
+      width: 100%;
+      z-index: 999;
+     
+     
+    }
+  .homee,
+  .add-course,
+  .coursee,
+  .employee,
+  .search-stud,
+  .approv-stud,
+  .approv-empl,
+  .my-prof,
+  .usernme,
+  .logot {
+      color: white;
+      text-align: center;
+      padding: 32px;
+      width: 100%;
+      transition: all 0.5s ease;
+ font-size: 12px;
+
+      
+    }
+      .options1,
+      .dropdown1{
+         color: white;
+         text-align: center;
+         padding: 32px;
+         width: 90%;
+        
+      }
+      .options2,
+      .dropdown2 {
+        color: white;
+        text-align: center;
+        padding: 32px;
+        width: 90%;
+
+      }
+        .options1,
+         .options2
+         {
+           width: 60%;
+      
+         }
+    .mobile-menu-icon{
+      display: block;
+      position: absolute;
+      font-size: 30px;
+      color: white;
+      background-color: rgb(0, 0, 0);
+      border:none;
+      
+    }
+    .img-li img,
+    .usernme,
+      .studroll
+      {
+     display: none;
+
+
+      }
+
+  }

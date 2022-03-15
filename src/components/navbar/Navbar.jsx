@@ -1,125 +1,146 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
-import "./navbar.scss";
+import "./navbar.css";
 
 export default function Navbar() {
   const { user, dispatch } = useContext(Context);
 
-  // window.onscroll = () => {
-  //   setIsScrolled(window.pageYOffset === 0 ? false : true);
-  //   return () => (window.onscroll = null);
-  // };
-
+ const [isMobile,setIsMobile]=useState(false);
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
   };
 
   return (
-    <div className={user && user.isAdmin ? "navbar1 admin " : "navbar1"}>
-      <div className="container-fluid  ">
-        <div className="left">
-          <Link to='/'>
-          <img
-            src="https://ictkerala.org/wp-content/uploads/2019/01/cropped-ict-ico.png"
-            alt=""
-          />
+    <nav className="navbar">
+         <ul className={isMobile ? "nav-links-mobile" :"nav-links"}  
+         onClick={()=>setIsMobile(false)}>
+          
+        
+          <Link to='/' className="img-li">
+            <li>
+              <img
+               src="https://ictkerala.org/wp-content/uploads/2019/01/cropped-ict-ico.png"
+               alt=""
+              />
+            </li>
           </Link>
-          <span>
-            <Link className="link" to="/">
-              HOME
+           
+               <li  className="studroll">
+                    ICTAK STUDROLL
+               </li>
+           
+            <Link className="homee" to="/">
+               <li>
+                     HOME
+               </li>
             </Link>
-          </span>
+         
           {!user && (
-            <div className="dropdown">
-              <span>LOGIN</span>
-              <div className="options">
-                <Link className="link optionsValue" to="/student-login">
-                  <span>STUDENT</span>
+              <div className="dropdown1">
+                    <li>LOGIN</li>
+               <div className="options1">
+                <Link className="link optionsvalue" to="/student-login">
+                     <li>STUDENT </li>
                 </Link>
-                <Link className="link optionsValue" to="/employee-login">
-                  <span>EMPLOYEE</span>
+                <Link className="link optionsvalue" to="/employee-login">
+                     <li>EMPLOYEE </li>
                 </Link>
-                <Link className="link optionsValue" to="/admin-login">
-                  <span>ADMIN</span>
+                <Link className="link optionsvalue" to="/admin-login">
+                     <li>ADMIN </li>
                 </Link>
-              </div>
-            </div>
+             </div>
+         </div>
           )}
           {!user && (
-            <div className="dropdown">
-              <span>REGISTER</span>
-              <div className="options">
+            <div className="dropdown2">
+                    <li>REGISTER</li>
+              <div className="options2">
                 <Link className="link optionsValue" to="/student-register">
-                  <span>STUDENT</span>
+                     <li>STUDENT</li>
                 </Link>
                 <Link className="link optionsValue" to="/employee-register">
-                  <span>EMPLOYEE</span>
+                     <li>EMPLOYEE</li>
                 </Link>
               </div>
             </div>
           )}
 
           {user && user.isAdmin && (
-            <span>
-              <Link className="link" to="/course">
-                ADD COURSES
+            
+              <Link className="add-course" to="/course">
+                <li>
+                     ADD COURSES
+                </li>
               </Link>
-            </span>
+  
           )}
-          <span>
-            <Link className="link" to="/courses">
-              COURSES
+         
+            <Link className="coursee" to="/courses">
+                <li>
+                    COURSES
+                 </li>
             </Link>
-          </span>
+        
 
           {user && user.isAdmin && (
-            <span>
-              <Link className="link" to="/employee">
-                EMPLOYEES
+             <li>
+              <Link className="employee" to="/employee">
+                  EMPLOYEES
               </Link>
-            </span>
+             </li>
           )}
           {((user && user.isAdmin) || (user && user.isEmployee)) && (
-            <span>
-              <Link className="link" to="/search">
-                SEARCH STUDENTS
+            
+              <Link className="search-stud" to="/search">
+                <li>
+                     SEARCH STUDENTS
+                </li>
               </Link>
-            </span>
+        
           )}
           {user && user.isAdmin && (
-            <span>
-              <Link className="link" to="/approve">
-                APPROVE STUDENTS
+           
+              <Link className="approv-stud" to="/approve">
+                  <li>
+                        APPROVE STUDENTS
+                  </li>
               </Link>
-            </span>
+        
           )}
           {user && user.isAdmin && (
-            <span>
-              <Link className="link" to="/employee-approve">
-                APPROVE EMPLOYEES
+            
+              <Link className="approv-empl" to="/employee-approve">
+                 <li>
+                     APPROVE EMPLOYEES
+                </li>
               </Link>
-            </span>
+            
           )}
-        </div>
+        
         {user && (
-          <div className="right">
+      <>
             {user && user.isStudent && (
-              <span>
-                <Link className="link" to={`/student/${user._id || ""}`}>
-                  MY PROFILE
+              
+                <Link className="my-prof" to={`/student/${user._id || ""}`}>
+                   <li >
+                        MY  PROFILE
+                  </li>
                 </Link>
-              </span>
+             
             )}
-            <span>{user.username}</span>
-            <Link className="link" to="/">
-              <span className="topListItem" onClick={handleLogout}>
-                LOGOUT
-              </span>
+             <li className="usernme">{user.username} </li>
+            <Link className="logot" to="/">
+              <li  onClick={handleLogout}>
+                   LOGOUT
+              </li>
             </Link>
-          </div>
+         </>
         )}
-      </div>
-    </div>
+    </ul>
+     <button className="mobile-menu-icon"  onClick={()=>setIsMobile(!isMobile)}>
+      {isMobile?<i className="fas fa-times"></i>:<i class="fa-solid fa-bars"></i>}
+    </button>
+   </nav>
   );
 }
