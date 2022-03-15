@@ -133,33 +133,42 @@ width: 50px;
   .employee,
   .search-stud,
   .approv-stud,
-  .approv-empl,
-  .my-prof,
-  .usernme,
-  .logot {
+  .approv-empl
+  
+  {
       color: white;
-      text-align: center;
-      padding: 32px;
+      text-align:center;
+ 
+      /* padding: 32px; */
       width: 100%;
       transition: all 0.5s ease;
  font-size: 12px;
 
+
       
+    }
+
+    .my-prof,
+    .logot{
+           margin-left: 41%;
+            font-size: 12px;
     }
       .options1,
       .dropdown1{
          color: white;
          text-align: center;
-         padding: 32px;
+         /* padding: 32px; */
          width: 90%;
+         font-size: 12px;
         
       }
       .options2,
       .dropdown2 {
         color: white;
         text-align: center;
-        padding: 32px;
+        /* padding: 32px; */
         width: 90%;
+        font-size: 12px;
 
       }
         .options1,

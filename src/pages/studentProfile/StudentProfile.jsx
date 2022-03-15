@@ -30,10 +30,10 @@ export default function StudentProfile() {
   useEffect(() => {
     const getStudent = async () => {
       const res = await axios.get(
-        "https://ictak-project.herokuapp.com/api/student/find/" + path
-        // {
-        //   headers: { token: "Bearer " + user.accessToken },
-        // }
+        "https://ictak-project.herokuapp.com/api/student/find/" + path,
+        {
+          headers: { token: "Bearer " + user.accessToken },
+        }
       );
       setStudent(res.data);
       setName(res.data.name);
@@ -58,11 +58,11 @@ export default function StudentProfile() {
   const handledelete = async () => {
     try {
       await axios.delete(
-        `https://ictak-project.herokuapp.com/api/student/${student._id}`
+        `https://ictak-project.herokuapp.com/api/student/${student._id}`,
 
-        // {
-        //   headers: { token: "Bearer " + user.accessToken },
-        // },
+        {
+          headers: { token: "Bearer " + user.accessToken },
+        }
       );
 
       window.location.replace("/search");
@@ -88,10 +88,11 @@ export default function StudentProfile() {
           course,
           photo,
           exitExamMark,
+        },
+        {
+          headers: { token: "Bearer " + user.accessToken },
         }
-        // {
-        //   headers: { token: "Bearer " + user.accessToken },
-        // }
+    
       );
       setUpdateMode(false);
       setReload(!relod);

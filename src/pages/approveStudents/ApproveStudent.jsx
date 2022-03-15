@@ -1,18 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./approveStudent.css";
+import { Context } from "../../context/Context";
 import axios from "axios";
 export default function ApproveStudent() {
+  const { user } = useContext(Context);
   const [students, setStudents] = useState([]);
   const [id, setId] = useState("");
   useEffect(() => {
     const fetchStudents = async () => {
       const res = await axios.get(
-        "https://ictak-project.herokuapp.com/api/student/approve"
+        "https://ictak-project.herokuapp.com/api/student/approve",
+        {
+          headers: { token: "Bearer " + user.accessToken },
+        }
       );
       setStudents(res.data);
     };
     fetchStudents();
-  }, [id]);
+  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClick = (event) => {
     setId(event.target.value);
@@ -22,14 +27,18 @@ export default function ApproveStudent() {
       if (id) {
         try {
           await axios.put(
-            `https://ictak-project.herokuapp.com/api/student/approve/${id}`
+            `https://ictak-project.herokuapp.com/api/student/approve/${id}`,
+            {},
+            {
+              headers: { token: "Bearer " + user.accessToken },
+            }
           );
         } catch (err) {}
       }
-      setId("00");
+      setId(false);
     };
     approveStudent();
-  }, [id]);
+  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
    return (
     <div className="aprove_table_container">
