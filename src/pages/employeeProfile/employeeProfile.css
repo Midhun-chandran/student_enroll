@@ -69,3 +69,11 @@ background: #00e08a;
 label {
   font-size: 1.2rem;
 }
+
+@media screen and (max-width: 960px) {
+  .employeeProfile {
+    font-size: 12px;
+    height: 1800px;
+  }
+
+}

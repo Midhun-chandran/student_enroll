@@ -5,6 +5,7 @@
 background: #00e08a;
   position: relative;
   height: 910px;
+ 
   /* width: 100%; */
 }
 .allWrap {
@@ -52,7 +53,7 @@ background: #00e08a;
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 0;
-  margin-bottom: 1rem;
+
 }
 
 .user-name {
@@ -65,4 +66,13 @@ background: #00e08a;
 
 label {
   font-size: 1.2rem;
+}
+
+
+@media screen and (max-width: 960px){
+  .studentProfile{
+    font-size: 12px;
+  height: 1800px;
+  }
+  
 }
