@@ -30,14 +30,14 @@ export default function Navbar() {
        
         {!user && (
            <li class="nav-item dropdown  me-4">
-             <a class="nav-link  active" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <Link  to='/' class="nav-link  active" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             LOGIN
-          </a>
+          </Link>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-               <li><a class="dropdown-item" href="/employee-login">EMPLOYEE</a></li>
-               <li><a class="dropdown-item" href="/admin-login"> ADMIN</a></li>
+               <li><Link  class="dropdown-item" to="/employee-login">EMPLOYEE</Link></li>
+               <li><Link  class="dropdown-item" to="/admin-login"> ADMIN</Link></li>
           
-              <li><a class="dropdown-item" href="/student-login"> STUDENT</a></li>
+              <li><Link  class="dropdown-item" to="/student-login"> STUDENT</Link></li>
             </ul>
           </li>
          )}
@@ -45,12 +45,12 @@ export default function Navbar() {
          {!user && (
 
          <li class="nav-item dropdown me-4 ">
-            <a class="nav-link  active "  id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <Link to='/' class="nav-link  active "  id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             REGISTER
-          </a>
+          </Link>
           <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
-            <li><a class="dropdown-item " href="/student-register">STUDENT</a></li>
-            <li><a class="dropdown-item" href="/employee-register">EMPLOYEE</a></li>
+            <li><Link class="dropdown-item " to="/student-register">STUDENT</Link></li>
+            <li><Link class="dropdown-item" to="/employee-register">EMPLOYEE</Link></li>
           
        
           </ul>
@@ -113,7 +113,7 @@ export default function Navbar() {
              </li>
             )}
          <li class="nav-item right me-4 ">
-             <a class="nav-link disabled">{user.username}</a>
+             <Link class="nav-link disabled">{user.username}</Link>
         </li>
      
        <li className="nav-item me-4" onClick={handleLogout}>
