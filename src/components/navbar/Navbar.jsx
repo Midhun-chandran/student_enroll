@@ -92,7 +92,7 @@ export default function Navbar() {
           )}
 
           {user && user.isAdmin && (
-          <li className="nav-item me-4">
+          <li className="nav-item ">
            <Link to='/employee-approve' className="nav-link active" aria-current="page" > APPROVE EMPLOYEES</Link>
         </li>
           )}
