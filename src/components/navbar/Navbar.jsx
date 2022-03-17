@@ -5,142 +5,120 @@ import "./navbar.css";
 
 export default function Navbar() {
   const { user, dispatch } = useContext(Context);
-
- const [isMobile,setIsMobile]=useState(false);
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
   };
 
   return (
-    <nav className="navbar">
-         <ul className={isMobile ? "nav-links-mobile" :"nav-links"}  
-         onClick={()=>setIsMobile(false)}>
-          
-        
-          <Link to='/' className="img-li">
-            <li>
-              <img
-               src="https://ictkerala.org/wp-content/uploads/2019/01/cropped-ict-ico.png"
-               alt=""
-              />
-            </li>
-          </Link>
-           
-               <li  className="studroll">
-                    ICTAK STUDROLL
-               </li>
-           
-            <Link className="homee" to="/">
-               <li>
-                     HOME
-               </li>
-            </Link>
-         
-          {!user && (
-              <div className="dropdown1">
-                    <li>LOGIN</li>
-               <div className="options1">
-                <Link className="link optionsvalue" to="/student-login">
-                     <li>STUDENT </li>
-                </Link>
-                <Link className="link optionsvalue" to="/employee-login">
-                     <li>EMPLOYEE </li>
-                </Link>
-                <Link className="link optionsvalue" to="/admin-login">
-                     <li>ADMIN </li>
-                </Link>
-             </div>
-         </div>
-          )}
-          {!user && (
-            <div className="dropdown2">
-                    <li>REGISTER</li>
-              <div className="options2">
-                <Link className="link optionsValue" to="/student-register">
-                     <li>STUDENT</li>
-                </Link>
-                <Link className="link optionsValue" to="/employee-register">
-                     <li>EMPLOYEE</li>
-                </Link>
-              </div>
-            </div>
-          )}
 
-          {user && user.isAdmin && (
-            
-              <Link className="add-course" to="/course">
-                <li>
-                     ADD COURSES
-                </li>
-              </Link>
-  
-          )}
-         
-            <Link className="coursee" to="/courses">
-                <li>
-                    COURSES
-                 </li>
-            </Link>
-        
-
-          {user && user.isAdmin && (
-             <li>
-              <Link className="employee" to="/employee">
-                  EMPLOYEES
-              </Link>
-             </li>
-          )}
-          {((user && user.isAdmin) || (user && user.isEmployee)) && (
-            
-              <Link className="search-stud" to="/search">
-                <li>
-                     SEARCH STUDENTS
-                </li>
-              </Link>
-        
-          )}
-          {user && user.isAdmin && (
-           
-              <Link className="approv-stud" to="/approve">
-                  <li>
-                        APPROVE STUDENTS
-                  </li>
-              </Link>
-        
-          )}
-          {user && user.isAdmin && (
-            
-              <Link className="approv-empl" to="/employee-approve">
-                 <li>
-                     APPROVE EMPLOYEES
-                </li>
-              </Link>
-            
-          )}
-        
-        {user && (
-      <>
-            {user && user.isStudent && (
-              
-                <Link className="my-prof" to={`/student/${user._id || ""}`}>
-                   <li >
-                        MY  PROFILE
-                  </li>
-                </Link>
-             
-            )}
-             <li className="usernme">{user.username} </li>
-            <Link className="logot" to="/">
-              <li  onClick={handleLogout}>
-                   LOGOUT
-              </li>
-            </Link>
-         </>
-        )}
-    </ul>
-     <button className="mobile-menu-icon"  onClick={()=>setIsMobile(!isMobile)}>
-      {isMobile?<i className="fas fa-times"></i>:<i class="fa-solid fa-bars"></i>}
+  <nav className="navbar fixed-top navbar-expand-lg  navbar-dark bg-dark">
+  <div className="container-fluid">
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-   </nav>
-  );
+     <Link to='/' className="navbar-brand"><img 
+      src="https://ictkerala.org/wp-content/uploads/2019/01/cropped-ict-ico.png"
+                alt=""
+              style={{width:"35px"}} /></Link>
+    <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+ 
+        <li className="nav-item">
+           <Link to='/' className="nav-link active" aria-current="page" >HOME</Link>
+        </li>
+        
+         <li className="nav-item">
+           <Link to='/courses' className="nav-link active" aria-current="page" >COURSES</Link>
+        </li>
+
+
+        {!user && (
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle active" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            LOGIN
+          </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+               <li><a class="dropdown-item" href="/employee-login">EMPLOYEE</a></li>
+               <li><a class="dropdown-item" href="/admin-login"> ADMIN</a></li>
+          
+              <li><a class="dropdown-item" href="/student-login"> STUDENT</a></li>
+            </ul>
+          </li>
+         )}
+
+         {!user && (
+
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active "  id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            REGISTER
+          </a>
+          <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item " href="/student-register">STUDENT</a></li>
+            <li><a class="dropdown-item" href="/employee-register">EMPLOYEE</a></li>
+          
+       
+          </ul>
+        </li>
+          )}
+
+             {user && user.isAdmin && (
+          <li className="nav-item">
+           <Link to='/course' className="nav-link active" aria-current="page" >ADD COURSES</Link>
+        </li>
+          )}
+         
+
+           {user && user.isAdmin && (
+          <li className="nav-item">
+           <Link to='/courses' className="nav-link active" aria-current="page" > EMPLOYEES</Link>
+        </li>
+          )}
+
+            {((user && user.isAdmin) || (user && user.isEmployee)) && (
+          <li className="nav-item">
+           <Link to='/search' className="nav-link active" aria-current="page" >  SEARCH STUDENTS</Link>
+        </li>
+          )}
+
+           {user && user.isAdmin && (
+          <li className="nav-item">
+           <Link to='/approve' className="nav-link active" aria-current="page" > APPROVE STUDENTS</Link>
+        </li>
+          )}
+
+          {user && user.isAdmin && (
+          <li className="nav-item">
+           <Link to='/employee-approve' className="nav-link active" aria-current="page" > APPROVE EMPLOYEES</Link>
+        </li>
+          )}
+           </ul>
+           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          {user && (
+          <>
+               {user && user.isStudent && (
+                <li className="nav-item">
+                  <Link to={`/student/${user._id || ""}`} className="nav-link active" aria-current="page" > MY PROFILE</Link>
+               </li>
+          )}
+
+           {user && user.isEmployee && (
+              <li className="nav-item right ">
+               <Link to={`/employee/${user._id || ""}`} className="nav-link active" aria-current="page" > MY PROFILE</Link>
+             </li>
+            )}
+         <li class="nav-item right ">
+             <a class="nav-link disabled">{user.username}</a>
+        </li>
+     
+       <li className="nav-item" onClick={handleLogout}>
+           <Link to='/' className="nav-link active " aria-current="page" > LOGOUT</Link>
+        </li>
+       </>
+        )}
+       </ul>  
+      
+    </div>
+  </div>
+</nav>  );
 }
