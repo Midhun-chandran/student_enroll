@@ -23,13 +23,13 @@ export default function Navbar() {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
  
-        <li className="nav-item me-5">
+        <li className="nav-item me-4 ">
            <Link to='/' className="nav-link active" aria-current="page" >HOME</Link>
         </li>
         
        
         {!user && (
-           <li class="nav-item dropdown me-5">
+           <li class="nav-item dropdown  me-4">
              <a class="nav-link  active" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             LOGIN
           </a>
@@ -44,7 +44,7 @@ export default function Navbar() {
 
          {!user && (
 
-         <li class="nav-item dropdown me-5">
+         <li class="nav-item dropdown me-4 ">
             <a class="nav-link  active "  id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             REGISTER
           </a>
@@ -61,32 +61,32 @@ export default function Navbar() {
 
         
            {user && user.isAdmin && (
-          <li className="nav-item me-5">
+          <li className="nav-item me-4">
            <Link to='/course' className="nav-link active" aria-current="page" >ADD COURSES</Link>
         </li>
           )}
          
         
-         <li className="nav-item me-5">
+         <li className="nav-item me-4">
            <Link to='/courses' className="nav-link active" aria-current="page" >COURSES</Link>
         </li> 
 
         
            {user && user.isAdmin && (
-          <li className="nav-item me-3">
+          <li className="nav-item me-4">
            <Link to='/courses' className="nav-link active" aria-current="page" > EMPLOYEES</Link>
         </li>
           )}
 
 
             {((user && user.isAdmin) || (user && user.isEmployee)) && (
-          <li className="nav-item me-2">
+          <li className="nav-item me-4">
            <Link to='/search' className="nav-link active" aria-current="page" >  SEARCH STUDENTS</Link>
         </li>
           )}
 
            {user && user.isAdmin && (
-          <li className="nav-item me-1">
+          <li className="nav-item me-4">
            <Link to='/approve' className="nav-link active" aria-current="page" > APPROVE STUDENTS</Link>
         </li>
           )}
@@ -102,21 +102,21 @@ export default function Navbar() {
           {user && (
           <>
                {user && user.isStudent && (
-                <li className="nav-item">
+                <li className="nav-item me-4">
                   <Link to={`/student/${user._id || ""}`} className="nav-link active" aria-current="page" > MY PROFILE</Link>
                </li>
           )}
 
            {user && user.isEmployee && (
-              <li className="nav-item right ">
+              <li className="nav-item right me-4">
                <Link to={`/employee/${user._id || ""}`} className="nav-link active" aria-current="page" > MY PROFILE</Link>
              </li>
             )}
-         <li class="nav-item right ">
+         <li class="nav-item right me-4 ">
              <a class="nav-link disabled">{user.username}</a>
         </li>
      
-       <li className="nav-item" onClick={handleLogout}>
+       <li className="nav-item me-4" onClick={handleLogout}>
            <Link to='/' className="nav-link active " aria-current="page" > LOGOUT</Link>
         </li>
        </>
