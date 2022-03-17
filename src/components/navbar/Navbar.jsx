@@ -21,20 +21,35 @@ export default function Navbar() {
                 alt=""
               style={{width:"35px"}} /></Link>
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
  
-        <li className="nav-item">
+        <li className="nav-item me-5">
            <Link to='/' className="nav-link active" aria-current="page" >HOME</Link>
         </li>
         
-         <li className="nav-item">
-           <Link to='/courses' className="nav-link active" aria-current="page" >COURSES</Link>
+           {user && user.isAdmin && (
+          <li className="nav-item me-5">
+           <Link to='/course' className="nav-link active" aria-current="page" >ADD COURSES</Link>
         </li>
+          )}
+         
+        
+         <li className="nav-item me-5">
+           <Link to='/courses' className="nav-link active" aria-current="page" >COURSES</Link>
+        </li> 
+
+        
+           {user && user.isAdmin && (
+          <li className="nav-item me-3">
+           <Link to='/courses' className="nav-link active" aria-current="page" > EMPLOYEES</Link>
+        </li>
+          )}
+
 
 
         {!user && (
-           <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle active" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <li class="nav-item dropdown me-5">
+             <a class="nav-link  active" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             LOGIN
           </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -48,8 +63,8 @@ export default function Navbar() {
 
          {!user && (
 
-         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active "  id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         <li class="nav-item dropdown me-5">
+            <a class="nav-link  active "  id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             REGISTER
           </a>
           <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
@@ -61,27 +76,16 @@ export default function Navbar() {
         </li>
           )}
 
-             {user && user.isAdmin && (
-          <li className="nav-item">
-           <Link to='/course' className="nav-link active" aria-current="page" >ADD COURSES</Link>
-        </li>
-          )}
-         
-
-           {user && user.isAdmin && (
-          <li className="nav-item">
-           <Link to='/courses' className="nav-link active" aria-current="page" > EMPLOYEES</Link>
-        </li>
-          )}
+          
 
             {((user && user.isAdmin) || (user && user.isEmployee)) && (
-          <li className="nav-item">
+          <li className="nav-item me-2">
            <Link to='/search' className="nav-link active" aria-current="page" >  SEARCH STUDENTS</Link>
         </li>
           )}
 
            {user && user.isAdmin && (
-          <li className="nav-item">
+          <li className="nav-item me-1">
            <Link to='/approve' className="nav-link active" aria-current="page" > APPROVE STUDENTS</Link>
         </li>
           )}
