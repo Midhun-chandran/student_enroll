@@ -27,26 +27,7 @@ export default function Navbar() {
            <Link to='/' className="nav-link active" aria-current="page" >HOME</Link>
         </li>
         
-           {user && user.isAdmin && (
-          <li className="nav-item me-5">
-           <Link to='/course' className="nav-link active" aria-current="page" >ADD COURSES</Link>
-        </li>
-          )}
-         
-        
-         <li className="nav-item me-5">
-           <Link to='/courses' className="nav-link active" aria-current="page" >COURSES</Link>
-        </li> 
-
-        
-           {user && user.isAdmin && (
-          <li className="nav-item me-3">
-           <Link to='/courses' className="nav-link active" aria-current="page" > EMPLOYEES</Link>
-        </li>
-          )}
-
-
-
+       
         {!user && (
            <li class="nav-item dropdown me-5">
              <a class="nav-link  active" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,6 +58,26 @@ export default function Navbar() {
           )}
 
           
+
+        
+           {user && user.isAdmin && (
+          <li className="nav-item me-5">
+           <Link to='/course' className="nav-link active" aria-current="page" >ADD COURSES</Link>
+        </li>
+          )}
+         
+        
+         <li className="nav-item me-5">
+           <Link to='/courses' className="nav-link active" aria-current="page" >COURSES</Link>
+        </li> 
+
+        
+           {user && user.isAdmin && (
+          <li className="nav-item me-3">
+           <Link to='/courses' className="nav-link active" aria-current="page" > EMPLOYEES</Link>
+        </li>
+          )}
+
 
             {((user && user.isAdmin) || (user && user.isEmployee)) && (
           <li className="nav-item me-2">
