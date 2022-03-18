@@ -63,7 +63,7 @@ export default function Navbar() {
           )}
            {user && user.isAdmin && (
           <li className="nav-item me-3">
-           <Link to='/employee-register' className="nav-link active" aria-current="page" > EMPLOYEES</Link>
+           <Link to='/employee' className="nav-link active" aria-current="page" > EMPLOYEES</Link>
               </li>
           )}
 
