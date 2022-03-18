@@ -55,7 +55,8 @@ export default function StudentRegister() {
       console.log(error);
     }
   };
-
+  
+console.log('patttern',pattern.password);
   ////////////////////////
   /////payment end///////
   //////////////////////
@@ -100,7 +101,7 @@ export default function StudentRegister() {
     const { name, value } = event.target;
 
     setFormValues({ ...formValues, [name]: value });
-    // console.log(formValues);
+    console.log(formValues);
   };
   const handleCourse = (event) => {
     setCourse(event.target.value);
@@ -123,7 +124,7 @@ export default function StudentRegister() {
     event.preventDefault();
     formValues.course = course;
     formValues.fee = fee;
-    // console.log(formValues);
+    console.log(formValues);
     setFocused(true);
     setPaymentMode(true);
 
@@ -146,11 +147,12 @@ export default function StudentRegister() {
         formValues
       );
       console.log(res);
+      
 
       // window.location.replace("/student-login");
     } catch (err) {}
   };
-  // console.log(focused);
+  console.log(focused);
 
   return (
     <>
@@ -211,15 +213,17 @@ export default function StudentRegister() {
                       className="registerInput"
                       required="true"
                       onChange={handleChange}
-                      pattern={pattern.password}
+                      pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                       onBlur={handleFocus}
                       focused={focused.toString()}
                       onFocus={() => setFocused(false)}
                       oninvalid="setCustomValidity('Must be 4 Characters')"
                       oninput="setCustomValidity('')"
                     />
+                   
                     <span className="error">{errorMessage.password}</span>
                   </div>
+                  
                   <div className="formInput col-sm">
                     <label>Phone</label>
                     <input
@@ -377,7 +381,7 @@ export default function StudentRegister() {
                       type="file"
                       name="photo"
                       className="registerInput"
-                      required="true"
+                      // required="true"
                       onChange={(e) => setFile(e.target.files[0])}
                     />
                     <span className="error">{errorMessage.others}</span>
